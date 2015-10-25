@@ -13,7 +13,7 @@ I want a more simple interpreter management tool.
 
 - Installing specified version's python interpreter to under `/opt`
 - Create symlink to `/usr/local/bin`
-- Create virtualenv using `virtualenv`.
+- Create virtualenv using `pyvenv` or `virtualenv`.
 
 
 ## Tutorial
