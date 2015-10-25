@@ -23,8 +23,8 @@ Options:
     --help, -h         print this
 
 Example:
-    $ $(basename ${0}) install 3.5.0
-    $ $(basename ${0}) link 3.5.0
+    $ sudo $(basename ${0}) install 3.5.0
+    $ sudo $(basename ${0}) link 3.5.0
     $ $(basename ${0}) link 3.5 venv
 EOF
 }

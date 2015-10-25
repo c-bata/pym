@@ -31,8 +31,8 @@ $ sudo chmod +x /usr/bin/pymanage
 ###### 2. Install python
 
 ```
-$ pymanage install 3.4.3
-$ pymanage install 3.5.0
+$ sudo pymanage install 3.4.3
+$ sudo pymanage install 3.5.0
 $ ls /opt/
 python-3.4.3 python-3.5.0
 ```
@@ -40,8 +40,8 @@ python-3.4.3 python-3.5.0
 ###### 3. Install python
 
 ```
-$ pymanage link 3.4.3
-$ pymanage link 3.5.0
+$ sudo pymanage link 3.4.3
+$ sudo pymanage link 3.5.0
 $ ls /usr/local/bin/ | grep python
 python3.4
 python3.5
