@@ -20,7 +20,7 @@ These functions make a our environment to complex.
 
 ###### 1. Install pymanage
 
-- Download [release file](https://github.com/c-bata/pymanage/releases) or Copy paste pymanage script.
+- Download [release file](https://github.com/c-bata/pymanage/releases) or Copy and paste pymanage script.
 - Set PATH and add permission to execute.
 
 ```
