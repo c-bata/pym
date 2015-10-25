@@ -74,7 +74,7 @@ Version:
 Usage:
     install <version>            Install a Python version in "/opt"
     link <version>               Create symlink from specified version's python to "/usr/local/bin"
-    venv <version> [<dirname>]   Create virtualenv using pyvenv or virtualenv
+    venv <version> <dirname>     Create virtualenv using pyvenv or virtualenv
 
 Options:
     --version, -v      print pymanage version
@@ -83,7 +83,7 @@ Options:
 Example:
     $ sudo pymanage install 3.5.0
     $ sudo pymanage link 3.5.0
-    $ pymanage link 3.5 venv
+    $ pymanage venv 3.5 sandbox
 ```
 
 ## LICENSE

@@ -70,9 +70,9 @@ venv() {
     fi
 
     if [ `echo ${1} | cut -d '.' -f 1` = "3" ]; then
-        python${1} -m venv ${2:-WORKON_HOME}
+        python${1} -m venv ${2}
     else
-        virtualenv -p python${1} ${2:-WORKON_HOME}
+        virtualenv -p python${1} ${2}
     fi
 }
 
