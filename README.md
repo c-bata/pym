@@ -1,19 +1,19 @@
 # pymanage: Simple python interpreter manager
 
-## About
-
 `pyenv` offers a lot of python versions.
 Especially it can install anaconda easily.
 
-For example, a feature to bind python interpreter to specific directory
-by `pyenv local` and `pyenv global` commands is unnecessary for PyCharm users.
-These functions make a our environment to complex.
+But some features make an our environment to complex.
+For example, It is unnecessary for PyCharm users that the features to bind python interpreter to specific directory
+by `pyenv local` and `pyenv global` commands.
+And `pyenv-virtualenv` is too difficult for me.
+I want a more simple interpreter management tool.
 
 `pymanage` just offers following functions.
 
 - Installing specified version's python interpreter to under `/opt`
 - Create symlink to `/usr/local/bin`
-- Create virtualenv.
+- Create virtualenv using `virtualenv`.
 
 
 ## Tutorial
@@ -72,9 +72,9 @@ Version:
     0.0.1
 
 Usage:
-    install <version>          Install a Python version in "/opt"
-    link <version>             Create symlink from specified version's python to "/usr/local/bin"
-    venv <version> <dirname>   Create virtualenv
+    install <version>            Install a Python version in "/opt"
+    link <version>               Create symlink from specified version's python to "/usr/local/bin"
+    venv <version> [<dirname>]   Create virtualenv using pyvenv or virtualenv
 
 Options:
     --version, -v      print pymanage version
