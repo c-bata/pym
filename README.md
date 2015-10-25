@@ -4,9 +4,10 @@
 Especially it can install anaconda easily.
 
 But some features make an our environment to complex.
-For example, the feature to bind python interpreter to specific directory
-by `pyenv local` and `pyenv global` commands is unnecessary for PyCharm users.
+For example, It is unnecessary for PyCharm users that the features to bind python interpreter to specific directory
+by `pyenv local` and `pyenv global` commands.
 And `pyenv-virtualenv` is too difficult for me.
+I want a more simple interpreter management tool.
 
 `pymanage` just offers following functions.
 
