@@ -1,9 +1,10 @@
 #!/bin/sh
 
-VERSION=0.0.1
+VERSION=0.0.2
 
 PYMANAGE_ROOT=${PYMANAGE_ROOT:-/opt}
 PYMANAGE_PATH=${PYMANAGE_PATH:-/usr/local/bin}
+WORKON_HOME=${WORKON_HOME:-$HOME/.virtualenvs}
 tmpdir="${PYMANAGE_TMP:-/tmp}/`basename ${0}`.$$"
 
 usage() {
@@ -17,6 +18,7 @@ Usage:
     install <version>          Install a Python version in "${PYMANAGE_ROOT}"
     link <version>             Create symlink from specified version's python to "${PYMANAGE_PATH}"
     venv <version> <dirname>   Create virtualenv
+    workon <venv_name>         Activate virtualenv in "${WORKON_HOME}" like virtualenvwrapper
 
 Options:
     --version, -v      print $(basename ${0}) version
@@ -71,6 +73,17 @@ venv() {
     virtualenv -p python${1} ${2}
 }
 
+workon() {
+    if [ $# -ne 1 ]; then
+        for env in `ls -d ${WORKON_HOME}/*/`; do
+            basename ${env}
+        done
+    elif [ -d ${WORKON_HOME}/${1} ]; then
+        # TODO: Activate on parent process.
+        source ${WORKON_HOME}/${1}/bin/activate
+    fi
+}
+
 case "$1" in
     install|i)
         install $2
@@ -80,6 +93,9 @@ case "$1" in
         ;;
     venv|v)
         venv $2 $3
+        ;;
+    workon|w)
+        workon $2
         ;;
     version|--version|-v)
         version
