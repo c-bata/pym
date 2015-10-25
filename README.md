@@ -75,7 +75,7 @@ Usage:
     install <version>            Install a Python version in "/opt"
     link <version>               Create symlink from specified version's python to "/usr/local/bin"
     venv <version> <dirname>     Create virtualenv using pyvenv or virtualenv
-    workon <venv_name>           Activate virtualenv in "/Users/masashi/.virtualenvs" like virtualenvwrapper
+    workon <venv_name>           Activate virtualenv in "~/.virtualenvs" like virtualenvwrapper
 
 Options:
     --version, -v      print pymanage version
