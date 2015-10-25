@@ -4,6 +4,7 @@ VERSION=0.0.1
 
 PYMANAGE_ROOT=${PYMANAGE_ROOT:-/opt}
 PYMANAGE_PATH=${PYMANAGE_PATH:-/usr/local/bin}
+WORKON_HOME=${WORKON_HOME:-$HOME/.virtualenvs}
 tmpdir="${PYMANAGE_TMP:-/tmp}/`basename ${0}`.$$"
 
 usage() {
@@ -14,9 +15,9 @@ Version:
     ${VERSION}
 
 Usage:
-    install <version>          Install a Python version in "${PYMANAGE_ROOT}"
-    link <version>             Create symlink from specified version's python to "${PYMANAGE_PATH}"
-    venv <version> <dirname>   Create virtualenv
+    install <version>            Install a Python version in "${PYMANAGE_ROOT}"
+    link <version>               Create symlink from specified version's python to "${PYMANAGE_PATH}"
+    venv <version> [<dirname>]   Create virtualenv using pyvenv or virtualenv
 
 Options:
     --version, -v      print $(basename ${0}) version
@@ -68,7 +69,11 @@ venv() {
         mkdir -p ${2}
     fi
 
-    virtualenv -p python${1} ${2}
+    if [ `echo ${1} | cut -d '.' -f 1` = "3" ]; then
+        python${1} -m venv ${2:-WORKON_HOME}
+    else
+        virtualenv -p python${1} ${2:-WORKON_HOME}
+    fi
 }
 
 case "$1" in
