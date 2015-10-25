@@ -22,7 +22,7 @@ These functions make environment to complex.
 
 ```
 $ sudo wget <pymanage script url> -P /usr/bin
-$ sudo chmod +x `/usr/bin/pymanage`
+$ sudo chmod +x /usr/bin/pymanage
 ```
 
 ###### 2. Install python
@@ -57,7 +57,7 @@ $ source sandbox/bin/activate
 Python 3.5.0
 ```
 
-###### For more options
+## For more options
 
 Try "pymanage help" for more options.
 
