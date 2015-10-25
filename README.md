@@ -7,7 +7,7 @@ Especially it can install anaconda easily.
 
 For example, a feature to bind python interpreter to specific directory
 by `pyenv local` and `pyenv global` commands is unnecessary for PyCharm users.
-These functions make environment to complex.
+These functions make a our environment to complex.
 
 `pymanage` just offers following functions.
 
