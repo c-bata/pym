@@ -20,8 +20,11 @@ These functions make environment to complex.
 
 ###### 1. Install pymanage
 
+- Download [release file](https://github.com/c-bata/pymanage/releases) or Copy paste pymanage script.
+- Set PATH and add permission to execute.
+
 ```
-$ sudo wget <pymanage script url> -P /usr/bin
+$ sudo wget <pymanage script url on github release> -P /usr/bin
 $ sudo chmod +x /usr/bin/pymanage
 ```
 
