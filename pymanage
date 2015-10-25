@@ -1,0 +1,96 @@
+#!/bin/sh
+
+VERSION=0.0.1
+
+PYMANAGE_ROOT=${PYMANAGE_ROOT:-/opt}
+PYMANAGE_PATH=${PYMANAGE_PATH:-/usr/local/bin}
+tmpdir="${PYMANAGE_TMP:-/tmp}/`basename ${0}`.$$"
+
+usage() {
+    cat <<EOF
+$(basename ${0}) is a simple manager of python interpreter.
+
+Version:
+    ${VERSION}
+
+Usage:
+    install <version>          Install a Python version in "${PYMANAGE_ROOT}"
+    link <version>             Create symlink from specified version's python to "${PYMANAGE_PATH}"
+    venv <version> <dirname>   Create virtualenv
+
+Options:
+    --version, -v      print $(basename ${0}) version
+    --help, -h         print this
+
+Example:
+    $ $(basename ${0}) install 3.5.0
+    $ $(basename ${0}) link 3.5.0
+    $ $(basename ${0}) link 3.5 venv
+EOF
+}
+
+version() {
+    echo "$(basename ${0}) version ${VERSION} "
+}
+
+install() {
+    if ! [ -w ${PYMANAGE_ROOT} ]; then
+        echo "Permission denied at ${PYMANAGE_ROOT} "
+        exit 2
+    fi
+
+    mkdir -p ${tmpdir}
+    wget "https://www.python.org/ftp/python/${1}/Python-${1}.tgz" -P ${tmpdir}
+    tar zxvf "${tmpdir}/Python-${1}.tgz" -C ${tmpdir}
+    pushd "${tmpdir}/Python-${1}" > /dev/null 2>&1
+    ./configure --prefix=/${PYMANAGE_ROOT}/python-${1}
+    make
+    make install
+    popd > /dev/null 2>&1
+    trap 'rm -r ${tmpdir}' 0
+}
+
+link() {
+    if ! [ -w ${PYMANAGE_PATH} ]; then
+        echo "Permision denied at ${PYMANAGE_PATH} "
+        exit 2
+    fi
+
+    minor_ver=( `echo ${1} | cut -d '.' -f 1-2` )
+    ln -s ${PYMANAGE_ROOT}/python-${1}/bin/python${minor_ver} ${PYMANAGE_PATH}
+}
+
+venv() {
+    if ! type python${1} > /dev/null 2>&1; then
+        echo "python${1} is not found."
+        exit 2
+    elif [ ! -d ${2} ]; then
+        mkdir -p ${2}
+    fi
+
+    virtualenv -p python${1} ${2}
+}
+
+case "$1" in
+    install|i)
+        install $2
+        ;;
+    link|l)
+        link $2
+        ;;
+    venv|v)
+        venv $2 $3
+        ;;
+    version|--version|-v)
+        version
+        ;;
+    help|--help|-h)
+        usage
+        ;;
+    *)
+        echo "[Error] Invalid subcommand '${1}'"
+        usage
+        exit 2
+        ;;
+esac
+
