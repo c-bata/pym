@@ -24,6 +24,7 @@ I want a more simple interpreter management tool.
 ###### Mac OSX
 
 ```
+$ brew tap c-bata/pym
 $ brew install pym
 ```
 
