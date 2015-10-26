@@ -4,7 +4,7 @@ os:
   - osx
 install:
   - sudo ./pymanage install 3.5.0
-  - chmod +x test_pymanage.sh
+  - sudo ./pymanage link 3.5.0
 script:
   - sh ./test_pymanage.sh
 
