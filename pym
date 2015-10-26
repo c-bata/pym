@@ -53,6 +53,7 @@ install() {
     make install
     popd > /dev/null 2>&1
     trap 'rm -r ${tmpdir}' 0
+    echo "Python $1 is successfully installed under the ${PYM_ROOT}"
 }
 
 link() {
@@ -63,6 +64,7 @@ link() {
 
     minor_ver=$(echo ${1} | cut -d '.' -f 1-2)
     ln -s ${PYM_ROOT}/python-${1}/bin/python${minor_ver} ${PYM_PATH}
+    echo "Symlink created! Please confirm \"which python${minor_ver}\""
 }
 
 venv() {
@@ -78,6 +80,7 @@ venv() {
     else
         virtualenv -p python${1} ${2}
     fi
+    echo "Virtualenv created!"
 }
 
 case "$1" in
