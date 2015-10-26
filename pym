@@ -18,6 +18,11 @@ Usage:
     link <version>               Create symlink from specified version's python to "${PYM_PATH}"
     venv <version> [<dirname>]   Create virtualenv using pyvenv or virtualenv
 
+Environment variables:
+    PYM_ROOT : An installed python interpreter path  (default: "/opt")
+    PYM_PATH : A created symlink path                (default: "/usr/local/bin")
+    PYM_TMP  : A path to store temporary file        (default: "/tmp")
+
 Options:
     --version, -v      print $(basename ${0}) version
     --help, -h         print this
