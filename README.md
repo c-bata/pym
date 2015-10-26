@@ -18,9 +18,17 @@ I want a more simple interpreter management tool.
 - Create virtualenv using `pyvenv` or `virtualenv`.
 
 
-## Tutorial
 
-###### 1. Install pym
+## Installation
+
+###### Mac OSX
+
+```
+$ brew install pym
+```
+
+
+###### Linux
 
 - Download [release file](https://github.com/c-bata/pym/releases) or Copy and paste pym script.
 - Set PATH and add permission to execute.
@@ -31,7 +39,9 @@ $ sudo chmod +x <path_to_pym_script>
 ```
 
 
-###### 2. Install python
+## Tutorial
+
+###### 1. Install python
 
 ```
 $ sudo pym install 3.4.3
@@ -41,7 +51,7 @@ python-3.4.3 python-3.5.0
 ```
 
 
-###### 3. Install python
+###### 2. Install python
 
 ```
 $ sudo pym link 3.4.3
@@ -56,7 +66,7 @@ $ which python3.5
 ```
 
 
-###### 4. Create the virtualenv
+###### 3. Create the virtualenv
 
 ```
 $ pym venv 3.5 sandbox
