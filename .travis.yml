@@ -4,9 +4,10 @@ os:
   - linux
   - osx
 env:
-  - PYMANAGE_ROOT=$HOME/opt
-  - PYMANAGE_PATH=$HOME/bin
-  - PYMANAGE_TMP=$HOME/tmp
+  global:
+    - PYMANAGE_ROOT=./opt
+    - PYMANAGE_PATH=./bin
+    - PYMANAGE_TMP=./tmp
 matrix:
   allow_failures:
     - os: linux
