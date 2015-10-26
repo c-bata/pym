@@ -13,7 +13,7 @@ I want a more simple interpreter management tool.
 
 - Installing specified version's python interpreter to under `/opt`
 - Create symlink to `/usr/local/bin`
-- Create virtualenv using `virtualenv`.
+- Create virtualenv using `pyvenv` or `virtualenv`.
 
 
 ## Tutorial
@@ -24,8 +24,8 @@ I want a more simple interpreter management tool.
 - Set PATH and add permission to execute.
 
 ```
-$ sudo wget <pymanage script url on github release> -P /usr/bin
-$ sudo chmod +x /usr/bin/pymanage
+$ sudo wget <pymanage_script_url_on_github_release> -P <path_to_pymanage_script>
+$ sudo chmod +x <path_to_pymanage_script>
 ```
 
 ###### 2. Install python
@@ -69,7 +69,7 @@ $ pymanage help
 pymanage is a simple manager of python interpreter.
 
 Version:
-    0.0.1
+    0.0.2
 
 Usage:
     install <version>            Install a Python version in "/opt"
