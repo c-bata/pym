@@ -16,12 +16,10 @@ assert_exists_file() {
 
 case ${TRAVIS_OS_NAME} in
     "linux")
-        sudo ./pymanage install 3.5.0
         assert_exists_dir '/opt/python-3.5.0'
         exit 0
         ;;
     "osx")
-        sudo ./pymanage install 3.5.0
         assert_exists_dir '/opt/python-3.5.0'
         exit 0
         ;;
