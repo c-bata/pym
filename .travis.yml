@@ -12,6 +12,8 @@ matrix:
   allow_failures:
     - os: linux
 install:
+  - mkdir ./opt ./bin ./tmp
+  - chmod 666 ./opt ./bin ./tmp
   - ./pymanage install 3.5.0
   - ./pymanage link 3.5.0
 script:
