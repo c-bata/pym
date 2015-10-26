@@ -2,7 +2,7 @@ case ${TRAVIS_OS_NAME} in
     "linux")
         exit 0
         ;;
-    "mac")
+    "osx")
         exit 0
         ;;
     *)
