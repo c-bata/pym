@@ -1,0 +1,9 @@
+language: bash
+os:
+  - linux
+  - osx
+install:
+  - chmod +x test_pymanage.sh
+script:
+  - sh ./test_pymanage.sh
+
