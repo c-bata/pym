@@ -1,0 +1,13 @@
+language: bash
+os:
+  - linux
+  - osx
+matrix:
+  allow_failures:
+    - os: linux
+install:
+  - sudo ./pymanage install 3.5.0
+  - sudo ./pymanage link 3.5.0
+script:
+  - sh ./test_pymanage.sh
+

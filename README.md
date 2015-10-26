@@ -1,5 +1,7 @@
 # pymanage: Simple python interpreter manager
 
+[![Build Status](https://travis-ci.org/c-bata/pymanage.svg)](https://travis-ci.org/c-bata/pymanage)
+
 `pyenv` offers a lot of python versions.
 Especially it can install anaconda easily.
 
