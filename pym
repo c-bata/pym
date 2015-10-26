@@ -2,9 +2,9 @@
 
 VERSION=0.0.2
 
-PYMANAGE_ROOT=${PYMANAGE_ROOT:-/opt}
-PYMANAGE_PATH=${PYMANAGE_PATH:-/usr/local/bin}
-tmpdir="${PYMANAGE_TMP:-/tmp}/`basename ${0}`.$$"
+PYM_ROOT=${PYM_ROOT:-/opt}
+PYM_PATH=${PYM_PATH:-/usr/local/bin}
+tmpdir="${PYM_TMP:-/tmp}/`basename ${0}`.$$"
 
 usage() {
     cat <<EOF
@@ -14,8 +14,8 @@ Version:
     ${VERSION}
 
 Usage:
-    install <version>            Install a Python version in "${PYMANAGE_ROOT}"
-    link <version>               Create symlink from specified version's python to "${PYMANAGE_PATH}"
+    install <version>            Install a Python version in "${PYM_ROOT}"
+    link <version>               Create symlink from specified version's python to "${PYM_PATH}"
     venv <version> [<dirname>]   Create virtualenv using pyvenv or virtualenv
 
 Options:
@@ -34,8 +34,8 @@ version() {
 }
 
 install() {
-    if ! [ -w ${PYMANAGE_ROOT} ]; then
-        echo "Permission denied at ${PYMANAGE_ROOT} "
+    if ! [ -w ${PYM_ROOT} ]; then
+        echo "Permission denied at ${PYM_ROOT} "
         exit 2
     fi
 
@@ -43,7 +43,7 @@ install() {
     wget "https://www.python.org/ftp/python/${1}/Python-${1}.tgz" -P ${tmpdir}
     tar zxvf "${tmpdir}/Python-${1}.tgz" -C ${tmpdir}
     pushd "${tmpdir}/Python-${1}" > /dev/null 2>&1
-    ./configure --prefix=/${PYMANAGE_ROOT}/python-${1}
+    ./configure --prefix=/${PYM_ROOT}/python-${1}
     make
     make install
     popd > /dev/null 2>&1
@@ -51,13 +51,13 @@ install() {
 }
 
 link() {
-    if ! [ -w ${PYMANAGE_PATH} ]; then
-        echo "Permision denied at ${PYMANAGE_PATH} "
+    if ! [ -w ${PYM_PATH} ]; then
+        echo "Permision denied at ${PYM_PATH} "
         exit 2
     fi
 
     minor_ver=$(echo ${1} | cut -d '.' -f 1-2)
-    ln -s ${PYMANAGE_ROOT}/python-${1}/bin/python${minor_ver} ${PYMANAGE_PATH}
+    ln -s ${PYM_ROOT}/python-${1}/bin/python${minor_ver} ${PYM_PATH}
 }
 
 venv() {

@@ -1,6 +1,6 @@
-# pymanage: Simple python interpreter manager
+# pym: Simple python interpreter manager
 
-[![Build Status](https://travis-ci.org/c-bata/pymanage.svg?branch=master)](https://travis-ci.org/c-bata/pymanage)
+[![Build Status](https://travis-ci.org/c-bata/pym.svg?branch=master)](https://travis-ci.org/c-bata/pym)
 
 `pyenv` offers a lot of python versions.
 Especially it can install anaconda easily.
@@ -11,7 +11,7 @@ by `pyenv local` and `pyenv global` commands.
 And `pyenv-virtualenv` is too difficult for me.
 I want a more simple interpreter management tool.
 
-`pymanage` just offers following functions.
+`pym` just offers following functions.
 
 - Installing specified version's python interpreter to under `/opt`
 - Create symlink to `/usr/local/bin`
@@ -20,21 +20,21 @@ I want a more simple interpreter management tool.
 
 ## Tutorial
 
-###### 1. Install pymanage
+###### 1. Install pym
 
-- Download [release file](https://github.com/c-bata/pymanage/releases) or Copy and paste pymanage script.
+- Download [release file](https://github.com/c-bata/pym/releases) or Copy and paste pym script.
 - Set PATH and add permission to execute.
 
 ```
-$ sudo wget <pymanage_script_url_on_github_release> -P <path_to_pymanage_script>
-$ sudo chmod +x <path_to_pymanage_script>
+$ sudo wget <pym_script_url_on_github_release> -P <path_to_pym_script>
+$ sudo chmod +x <path_to_pym_script>
 ```
 
 ###### 2. Install python
 
 ```
-$ sudo pymanage install 3.4.3
-$ sudo pymanage install 3.5.0
+$ sudo pym install 3.4.3
+$ sudo pym install 3.5.0
 $ ls /opt/
 python-3.4.3 python-3.5.0
 ```
@@ -42,8 +42,8 @@ python-3.4.3 python-3.5.0
 ###### 3. Install python
 
 ```
-$ sudo pymanage link 3.4.3
-$ sudo pymanage link 3.5.0
+$ sudo pym link 3.4.3
+$ sudo pym link 3.5.0
 $ ls /usr/local/bin/ | grep python
 python3.4
 python3.5
@@ -56,7 +56,7 @@ $ which python3.5
 ###### 4. Create the virtualenv
 
 ```
-$ pymanage venv 3.5 sandbox
+$ pym venv 3.5 sandbox
 $ source sandbox/bin/activate
 (sandbox) $ python --version
 Python 3.5.0
@@ -64,11 +64,11 @@ Python 3.5.0
 
 ## For more options
 
-Try "pymanage help" for more options.
+Try "pym help" for more options.
 
 ```
-$ pymanage help
-pymanage is a simple manager of python interpreter.
+$ pym help
+pym is a simple manager of python interpreter.
 
 Version:
     0.0.2
@@ -79,13 +79,13 @@ Usage:
     venv <version> <dirname>     Create virtualenv using pyvenv or virtualenv
 
 Options:
-    --version, -v      print pymanage version
+    --version, -v      print pym version
     --help, -h         print this
 
 Example:
-    $ sudo pymanage install 3.5.0
-    $ sudo pymanage link 3.5.0
-    $ pymanage venv 3.5 sandbox
+    $ sudo pym install 3.5.0
+    $ sudo pym link 3.5.0
+    $ pym venv 3.5 sandbox
 ```
 
 ## LICENSE

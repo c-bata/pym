@@ -6,8 +6,8 @@ matrix:
   allow_failures:
     - os: linux
 install:
-  - sudo ./pymanage install 3.5.0
-  - sudo ./pymanage link 3.5.0
+  - sudo ./pym install 3.5.0
+  - sudo ./pym link 3.5.0
 script:
-  - sh ./test_pymanage.sh
+  - sh ./test_pym.sh
 
