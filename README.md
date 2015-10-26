@@ -85,7 +85,7 @@ $ pym help
 pym is a simple manager of python interpreter.
 
 Version:
-    0.0.2
+    0.0.3
 
 Usage:
     install <version>            Install a Python version in "/opt"
