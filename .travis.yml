@@ -1,13 +1,18 @@
+sudo: false
 language: bash
 os:
   - linux
   - osx
+env:
+  - PYMANAGE_ROOT=$HOME/opt
+  - PYMANAGE_PATH=$HOME/bin
+  - PYMANAGE_TMP=$HOME/tmp
 matrix:
   allow_failures:
     - os: linux
 install:
-  - sudo ./pymanage install 3.5.0
-  - sudo ./pymanage link 3.5.0
+  - ./pymanage install 3.5.0
+  - ./pymanage link 3.5.0
 script:
   - sh ./test_pymanage.sh
 
