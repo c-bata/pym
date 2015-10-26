@@ -16,7 +16,8 @@ Version:
 Usage:
     install <version>            Install a Python version in "${PYMANAGE_ROOT}"
     link <version>               Create symlink from specified version's python to "${PYMANAGE_PATH}"
-    venv <version> [<dirname>]   Create virtualenv using pyvenv or virtualenv
+    venv <version> <dirname>     Create virtualenv using pyvenv or virtualenv
+    workon <venv_name>           Activate virtualenv in "${WORKON_HOME}" like virtualenvwrapper
 
 Options:
     --version, -v      print $(basename ${0}) version
@@ -25,7 +26,7 @@ Options:
 Example:
     $ sudo $(basename ${0}) install 3.5.0
     $ sudo $(basename ${0}) link 3.5.0
-    $ $(basename ${0}) link 3.5 venv
+    $ $(basename ${0}) venv 3.5 sandbox
 EOF
 }
 
@@ -75,6 +76,17 @@ venv() {
     fi
 }
 
+workon() {
+    if [ $# -ne 1 ]; then
+        for env in `ls -d ${WORKON_HOME}/*/`; do
+            basename ${env}
+        done
+    elif [ -d ${WORKON_HOME}/${1} ]; then
+        # TODO: Activate on parent process.
+        source ${WORKON_HOME}/${1}/bin/activate
+    fi
+}
+
 case "$1" in
     install|i)
         install $2
@@ -84,6 +96,9 @@ case "$1" in
         ;;
     venv|v)
         venv $2 $3
+        ;;
+    workon|w)
+        workon $2
         ;;
     version|--version|-v)
         version
