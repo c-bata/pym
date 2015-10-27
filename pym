@@ -62,11 +62,16 @@ install() {
             wget "https://www.python.org/ftp/python/${1}/Python-${1}.tgz" -P ${tmpdir}
             tar zxvf "${tmpdir}/Python-${1}.tgz" -C ${tmpdir}
             pushd "${tmpdir}/Python-${1}" > /dev/null 2>&1
-            ./configure --prefix=/${PYM_ROOT}/python-${1}
+            ./configure --prefix=${PYM_ROOT}/python-${1}
             make
             make install
             popd > /dev/null 2>&1
             trap 'rm -r ${tmpdir}' 0
+
+            if [ ! -d ${PYM_ROOT}/python-${1} ]; then
+                echo "Failure..."
+                exit 1
+            fi
             echo "Python $1 is successfully installed under the \"${PYM_ROOT}/\""
             ;;
         --list|-l)
@@ -89,6 +94,11 @@ link() {
 
             minor_ver=$(echo ${1} | cut -d '.' -f 1-2)
             ln -s ${PYM_ROOT}/python-${1}/bin/python${minor_ver} ${PYM_PATH}
+
+            if [ ! -f ${PYM_PATH}/python${minor_ver} ]; then
+                echo "Failure..."
+                exit 1
+            fi
             echo "Symlink created! Please confirm \"which python${minor_ver}\""
             ;;
         --avairable|-a)
