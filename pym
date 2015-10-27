@@ -69,9 +69,6 @@ install() {
             trap 'rm -r ${tmpdir}' 0
             echo "Python $1 is successfully installed under the \"${PYM_ROOT}/\""
             ;;
-        --list|-l)
-            installed
-            ;;
         *)
             echo "[Error] Invalid argument."
             exit 1
@@ -91,11 +88,8 @@ link() {
             ln -s ${PYM_ROOT}/python-${1}/bin/python${minor_ver} ${PYM_PATH}
             echo "Symlink created! Please confirm \"which python${minor_ver}\""
             ;;
-        --avairable|-a)
-            installed
-            ;;
         --list|-l)
-            linked
+            installed
             ;;
         *)
             echo "[Error] Invalid argument."
@@ -122,7 +116,7 @@ venv() {
             fi
             echo "Virtualenv created!"
             ;;
-        --avairable|-a)
+        --list|-l)
             linked
             ;;
         *)

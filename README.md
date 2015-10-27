@@ -44,14 +44,14 @@ $ sudo chmod +x <path_to_pym_script>
 ref https://docs.python.org/devguide/setup.html
 
 > Fedora, Red Hat Enterprise Linux and other `yum` based systems:
->
+
 > ```
 > $ sudo yum install yum-utils
 > $ sudo yum-builddep python3
 > ```
->
+
 > Debian, Ubuntu and other apt based systems:
->
+
 > ```
 > $ sudo apt-get build-dep python3.4
 > ```
@@ -66,38 +66,33 @@ $ sudo pym install 3.4.3
 $ sudo pym install 3.5.0
 ```
 
+Preceding command installed specified python under `/opt/`.
+If you want to alter directory, please set `$PYM_ROOT`.
+
 ```
-$ ls /opt/
+$ ls /opt/ | grep python
 python-3.4.3 python-3.5.0
-$ pym install --list
-3.4.3
-3.5.0
 ```
+
 
 ###### 2. Install python
 
 ```
-$ pym link --avairable
+$ pym link --list  # show avairable interpreter. It is the same as `ls /opt/ | grep python`.
 3.4.3
 3.5.0
 $ sudo pym link 3.4.3
 $ sudo pym link 3.5.0
 ```
 
-```
-$ ls /usr/local/bin/ | grep python
-python3.4
-python3.5
-$ pym link --list
-3.4
-3.5
-```
+Preceding command created symbolic link under `/usr/local/bin/`.
+If you want to alter directory, please set `$PYM_PATH`.
 
 
 ###### 3. Create the virtualenv
 
 ```
-$ pym venv --avairable
+$ pym venv --list  # show avairable interpreter. It is the same as `ls /usr/local/bin/ | grep python`.
 3.4
 3.5
 $ pym venv 3.5 sandbox
