@@ -52,7 +52,7 @@ linked() {
 
 install() {
     case ${1} in
-        [0-9\.]+)
+        [0-9\.]*)
             if ! [ -w ${PYM_ROOT} ]; then
                 echo "Permission denied at ${PYM_ROOT} "
                 exit 1
@@ -81,7 +81,7 @@ install() {
 
 link() {
     case ${1} in
-        [0-9\.]+)
+        [0-9\.]*)
             if ! [ -w ${PYM_PATH} ]; then
                 echo "Permision denied at ${PYM_PATH} "
                 exit 1
@@ -107,7 +107,7 @@ link() {
 
 venv() {
     case ${1} in
-        [0-9\.]+)
+        [0-9\.]*)
             if ! type python${1} > /dev/null 2>&1; then
                 echo "python${1} is not found."
                 exit 1
