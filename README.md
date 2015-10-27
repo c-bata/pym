@@ -47,30 +47,46 @@ $ sudo chmod +x <path_to_pym_script>
 ```
 $ sudo pym install 3.4.3
 $ sudo pym install 3.5.0
-$ ls /opt/
-python-3.4.3 python-3.5.0
 ```
 
+```
+$ ls /opt/
+python-3.4.3 python-3.5.0
+$ pym install --list
+3.4.3
+3.5.0
+```
 
 ###### 2. Install python
 
 ```
+$ pym link --avairable
+3.4.3
+3.5.0
 $ sudo pym link 3.4.3
 $ sudo pym link 3.5.0
+```
+
+```
 $ ls /usr/local/bin/ | grep python
 python3.4
 python3.5
-$ which python3.4
-/usr/local/bin/python3.4
-$ which python3.5
-/usr/local/bin/python3.5
+$ pym link --list
+3.4
+3.5
 ```
 
 
 ###### 3. Create the virtualenv
 
 ```
+$ pym venv --avairable
+3.4
+3.5
 $ pym venv 3.5 sandbox
+```
+
+```
 $ source sandbox/bin/activate
 (sandbox) $ python --version
 Python 3.5.0
