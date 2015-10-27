@@ -112,34 +112,8 @@ Python 3.5.0
 
 ## For more options
 
-Try "pym help" for more options.
+Try `pym help` for more options.
 
-```
-$ pym help
-pym is a simple manager of python interpreter.
-
-Version:
-    0.0.3
-
-Usage:
-    install <version>            Install a Python version in "/opt"
-    link <version>               Create symlink from specified version's python to "/usr/local/bin"
-    venv <version> <dirname>     Create virtualenv using pyvenv or virtualenv
-
-Environment variables:
-    PYM_ROOT : An installed python interpreter path  (default: "/opt")
-    PYM_PATH : A created symlink path                (default: "/usr/local/bin")
-    PYM_TMP  : A path to store temporary file        (default: "/tmp")
-
-Options:
-    --version, -v      print pym version
-    --help, -h         print this
-
-Example:
-    $ sudo pym install 3.5.0
-    $ sudo pym link 3.5.0
-    $ pym venv 3.5 sandbox
-```
 
 ## LICENSE
 
