@@ -39,6 +39,23 @@ $ sudo wget <pym_script_url_on_github_release> -P <path_to_pym_script>
 $ sudo chmod +x <path_to_pym_script>
 ```
 
+**Dependencies**
+
+ref https://docs.python.org/devguide/setup.html
+
+> Fedora, Red Hat Enterprise Linux and other `yum` based systems:
+>
+> ```
+> $ sudo yum install yum-utils
+> $ sudo yum-builddep python3
+> ```
+>
+> Debian, Ubuntu and other apt based systems:
+>
+> ```
+> $ sudo apt-get build-dep python3.4
+> ```
+
 
 ## Tutorial
 
