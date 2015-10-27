@@ -41,7 +41,7 @@ version() {
 install() {
     if ! [ -w ${PYM_ROOT} ]; then
         echo "Permission denied at ${PYM_ROOT} "
-        exit 2
+        exit 1
     fi
 
     mkdir -p ${tmpdir}
@@ -53,24 +53,22 @@ install() {
     make install
     popd > /dev/null 2>&1
     trap 'rm -r ${tmpdir}' 0
-    echo "Python $1 is successfully installed under the ${PYM_ROOT}"
 }
 
 link() {
     if ! [ -w ${PYM_PATH} ]; then
         echo "Permision denied at ${PYM_PATH} "
-        exit 2
+        exit 1
     fi
 
     minor_ver=$(echo ${1} | cut -d '.' -f 1-2)
     ln -s ${PYM_ROOT}/python-${1}/bin/python${minor_ver} ${PYM_PATH}
-    echo "Symlink created! Please confirm \"which python${minor_ver}\""
 }
 
 venv() {
     if ! type python${1} > /dev/null 2>&1; then
         echo "python${1} is not found."
-        exit 2
+        exit 1
     elif [ ! -d ${2} ]; then
         mkdir -p ${2}
     fi
@@ -80,18 +78,20 @@ venv() {
     else
         virtualenv -p python${1} ${2}
     fi
-    echo "Virtualenv created!"
 }
 
 case "$1" in
     install|i)
         install $2
+        echo "Python $1 is successfully installed under the \"${PYM_ROOT}/\""
         ;;
     link|l)
         link $2
+        echo "Symlink created! Please confirm \"which python${minor_ver}\""
         ;;
     venv|v)
         venv $2 $3
+        echo "Virtualenv created!"
         ;;
     version|--version|-v)
         version
@@ -102,7 +102,7 @@ case "$1" in
     *)
         echo "[Error] Invalid subcommand '${1}'"
         usage
-        exit 2
+        exit 1
         ;;
 esac
 
