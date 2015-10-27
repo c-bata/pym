@@ -13,8 +13,8 @@ matrix:
     - os: linux
 install:
   - mkdir -p ~/.local/{opt,bin,tmp}
-  - sudo ./pym install 3.5.0
-  - sudo ./pym link 3.5.0
+  - ./pym install 3.5.0
+  - ./pym link 3.5.0
 script:
   - sh ./test_pym.sh
 
