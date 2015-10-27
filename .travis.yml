@@ -7,12 +7,9 @@ env:
     - PYM_ROOT=~/.local/opt
     - PYM_PATH=~/.local/bin
     - PYM_TMP=~/.local/tmp
-matrix:
-  allow_failures:
-    - os: linux
 install:
   - mkdir -p ~/.local/{opt,bin,tmp}
-  - if [ ${TRAVIS_OS_NAME} = "linux" ]; then sudo apt-get build-dep python3.4; fi
+  - if [ ${TRAVIS_OS_NAME} = "linux" ]; then sudo apt-get build-dep python; fi
   - ./pym install 3.5.0
   - ./pym link 3.5.0
 script:
