@@ -14,14 +14,12 @@ assert_exists_symlink() {
 
 case ${TRAVIS_OS_NAME} in
     "linux")
-        assert_exists_dir '/opt/python-3.5.0'
-        assert_exists_symlink '/usr/local/bin/python3.5'
-        exit 0
+        assert_exists_dir "${PYM_ROOT:-/opt}/python-3.5.0"
+        assert_exists_symlink "${PYM_PATH:-/usr/local/bin}/python3.5"
         ;;
     "osx")
-        assert_exists_dir '/opt/python-3.5.0'
-        assert_exists_symlink '/usr/local/bin/python3.5'
-        exit 0
+        assert_exists_dir "${PYM_ROOT:-/opt}/python-3.5.0"
+        assert_exists_symlink "${PYM_PATH:-/usr/local/bin}/python3.5"
         ;;
     *)
         exit 1
