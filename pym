@@ -38,6 +38,18 @@ version() {
     echo "$(basename ${0}) version ${VERSION} "
 }
 
+installed() {
+    for py in $(ls ${PYM_ROOT} | grep "py.*"); do
+        echo ${py} | sed "s/python-//"
+    done
+}
+
+linked() {
+    for py in $(ls ${PYM_PATH}/python?.?); do
+        echo $(basename ${py}) | sed "s/python//"
+    done
+}
+
 install() {
     case ${1} in
         [0-9\.]+)
@@ -58,7 +70,7 @@ install() {
             echo "Python $1 is successfully installed under the \"${PYM_ROOT}/\""
             ;;
         --list|-l)
-            ls ${PYM_ROOT} | grep "py.*"
+            installed
             ;;
         *)
             echo "[Error] Invalid argument."
@@ -80,14 +92,10 @@ link() {
             echo "Symlink created! Please confirm \"which python${minor_ver}\""
             ;;
         --avairable|-a)
-            for py in $(ls ${PYM_ROOT} | grep "py.*"); do
-                echo ${py} | sed "s/python-//"
-            done
+            installed
             ;;
         --list|-l)
-            for py in $(ls ${PYM_PATH}/python?.?); do
-                echo $(basename ${py}) | sed "s/python//"
-            done
+            linked
             ;;
         *)
             echo "[Error] Invalid argument."
@@ -115,9 +123,7 @@ venv() {
             echo "Virtualenv created!"
             ;;
         --avairable|-a)
-            for py in $(ls ${PYM_PATH}/python?.?); do
-                echo $(basename ${py}) | sed "s/python//"
-            done
+            linked
             ;;
         *)
             echo "[Error] Invalid argument."
