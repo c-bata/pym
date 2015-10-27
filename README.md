@@ -104,6 +104,8 @@ $ source sandbox/bin/activate
 Python 3.5.0
 ```
 
+:tada: Congratulations!
+
 
 ## For more options
 
