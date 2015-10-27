@@ -1,13 +1,20 @@
+sudo: false
 language: bash
 os:
   - linux
   - osx
+env:
+  global:
+    - PYM_ROOT=~/.local/opt
+    - PYM_PATH=~/.local/bin
+    - PYM_TMP=~/.local/tmp
 matrix:
   allow_failures:
     - os: linux
 install:
-  - sudo ./pym install 3.5.0
-  - sudo ./pym link 3.5.0
+  - mkdir -p ~/.local/{opt,bin,tmp}
+  - ./pym install 3.5.0
+  - ./pym link 3.5.0
 script:
   - sh ./test_pym.sh
 
