@@ -21,15 +21,17 @@ I want a more simple interpreter management tool.
 
 ## Installation
 
-###### Mac OSX
+#### Mac OSX
 
 ```
 $ brew tap c-bata/pym
 $ brew install pym
 ```
 
+Even if you don't use homebrew, you are avairable by the same way with how to install on linux.
 
-###### Linux
+
+#### Linux
 
 - Download [release file](https://github.com/c-bata/pym/releases) or Copy and paste pym script.
 - Set PATH and add permission to execute.
@@ -59,26 +61,20 @@ ref https://docs.python.org/devguide/setup.html
 
 ## Tutorial
 
-###### 1. Install python
+#### 1. Install python
+
+Following command install specified python under `/opt/`.
 
 ```
 $ sudo pym install 3.4.3
 $ sudo pym install 3.5.0
 ```
 
-Preceding command installed specified python under `/opt/`.
-If you want to alter directory, please set `$PYM_ROOT`.
+
+#### 2. Create symlink
 
 ```
-$ ls /opt/ | grep python
-python-3.4.3 python-3.5.0
-```
-
-
-###### 2. Install python
-
-```
-$ pym link --list  # show avairable interpreter. It is the same as `ls /opt/ | grep python`.
+$ pym link --list  # It is the same as `ls /opt/ | grep python`.
 3.4.3
 3.5.0
 $ sudo pym link 3.4.3
@@ -86,10 +82,16 @@ $ sudo pym link 3.5.0
 ```
 
 Preceding command created symbolic link under `/usr/local/bin/`.
-If you want to alter directory, please set `$PYM_PATH`.
+
+```
+$ which python3.4
+/usr/local/bin/python3.4
+$ which python3.5
+/usr/local/bin/python3.5
+```
 
 
-###### 3. Create the virtualenv
+#### 3. Create the virtualenv
 
 ```
 $ pym venv --list  # show avairable interpreter. It is the same as `ls /usr/local/bin/ | grep python`.
@@ -105,6 +107,18 @@ Python 3.5.0
 ```
 
 :tada: Congratulations!
+
+
+## Environment variables
+
+- `$PYM_ROOT`
+    The path where the interpreters are installed to. (default: "/opt")
+
+- `$PYM_PATH`
+    The path where the scripts are symlinked to. (default: "/usr/local/bin")
+
+- `$PYM_TMP`
+    The folder to store temporary file. (default: "/tmp")
 
 
 ## For more options
