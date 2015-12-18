@@ -1,9 +1,9 @@
 #!/bin/sh
 
-VERSION=0.0.5
+VERSION=0.0.6
 
 PYM_ROOT=${PYM_ROOT:-/opt}
-PYM_PATH=${PYM_PATH:-/usr/local/bin}
+PYM_PATH=${PYM_PATH:-$HOME/bin}
 tmpdir="${PYM_TMP:-/tmp}/`basename ${0}`.$$"
 
 usage() {
@@ -90,6 +90,10 @@ link() {
             fi
 
             minor_ver=$(echo ${1} | cut -d '.' -f 1-2)
+
+            if [ -f ${PYM_PATH}/python${minor_ver} ]; then
+                rm ${PYM_PATH}/python${minor_ver}
+            fi
             ln -s ${PYM_ROOT}/python-${1}/bin/python${minor_ver} ${PYM_PATH}
 
             if [ ! -f ${PYM_PATH}/python${minor_ver} ]; then
