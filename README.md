@@ -2,6 +2,9 @@
 
 [![Build Status](https://travis-ci.org/c-bata/pym.svg?branch=master)](https://travis-ci.org/c-bata/pym)
 
+**NOT MAINTAINED. And I aware of we should use [python-build](https://github.com/yyuu/pyenv/tree/master/plugins/python-build).**
+**I hope python-build will be separated from pyenv.**
+
 `pyenv` offers a lot of python versions.
 Especially it can install anaconda easily.
 
